@@ -16,6 +16,7 @@ const Header = () => {
     fetchCategories,
     categories: { drinks },
     searchRecipes,
+    showNotification,
   } = useAppStore();
 
   const handleChange = (
@@ -32,7 +33,10 @@ const Header = () => {
 
     // Validar
     if (Object.values(searchFilters).includes("")) {
-      console.log("Todos los campos son obligatorios");
+      showNotification({
+        text: "Todos los campos son obligatorios",
+        error: true,
+      });
       return;
     }
 
